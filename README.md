@@ -11,3 +11,23 @@ This is a very simple REST API that wraps the PowerPanel pwrstat application for
   - Note that you cannot use this GitHub repo as a Docker-Compose build context, due to needing to download a local copy of the CyberPower binary.
   - Access JSON response at http://<docker host IP>:5002/pwrstat
 
+# Home Assistant
+
+This is the template for Home Assistant, extracted from this Reddit [post](https://www.reddit.com/r/homeassistant/comments/7rfi6z/how_i_interfaced_my_150_cyberpower_ups_with_home/)
+
+```yaml
+sensor:
+- platform : rest 
+  resource: http://your-ip-address:5002/pwrstat 
+  name: Battery Backup 
+  value_template: '{{ value_json["State"] }}' 
+  json_attributes:  
+    - Remaining Runtime 
+    - Load 
+    - Power Supply by 
+    - Last Power Event 
+    - Test Result 
+    - Utility Voltage 
+    - Line Interaction 
+    - Battery Capacity 
+```
