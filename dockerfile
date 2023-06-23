@@ -1,5 +1,4 @@
-FROM python:3-stretch
-MAINTAINER Daniel Winks
+FROM python:3-bookworm
 
 VOLUME /src
 COPY pwrstat-api.py requirements.txt PPL-*-64bit.deb  powerpanel_*_amd64.deb init.sh /src/
